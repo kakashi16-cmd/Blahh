@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hmm so Tejuiii... 💖</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: pink;
+            padding: 50px;
+        }
+        .hidden {
+            display: none;
+        }
+        h1 {
+            color: blue; /* Text is now blue */
+        }
+        .welcome-btn, .next-btn {
+            font-size: 20px;
+            padding: 15px 30px;
+            border: none;
+            background-color: purple;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .heart-btn {
+            font-size: 20px;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            margin: 10px;
+            position: relative;
+        }
+        .yes {
+            background-color: green;
+            border-radius: 50%;
+        }
+        .no {
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- First Page -->
+    <div class="container" id="page1">
+        <h1>Hmm so Tejuiii... you finally opened my website! 💕</h1>
+        <button class="welcome-btn" onclick="nextPage('page1', 'page2')">Welcome Milady</button>
+    </div>
+
+    <!-- Second Page -->
+    <div class="container hidden" id="page2">
+        <h1>Are you sure you wanna go ahead..? 😏</h1>
+        <button class="next-btn" onclick="nextPage('page2', 'page3')">Yes, I'm sure!</button>
+    </div>
+
+    <!-- Third Page -->
+    <div class="container hidden" id="page3">
+        <h1>Will You Be My Valentine? 💖</h1>
+        <img src="https://media.giphy.com/media/3oz8xPjPPp6hZRdsAw/giphy.gif" width="200">
+        <div class="buttons">
+            <button class="heart-btn yes" onclick="showLoveMessage()">Yes</button>
+            <button class="heart-btn no" id="noButton">No</button>
+        </div>
+    </div>
+
+    <!-- Final Love Message Page -->
+    <div class="container hidden" id="page4">
+        <h1>Hello cutie, I just want to tell you how much I love you 🙁</h1>
+        <h2>Hehehhe I just wanted to show my love, I don't need your reply or anything to this 😁</h2>
+    </div>
+
+    <script>
+        function nextPage(current, next) {
+            document.getElementById(current).classList.add("hidden");
+            document.getElementById(next).classList.remove("hidden");
+        }
+
+        function showLoveMessage() {
+            nextPage('page3', 'page4');
+        }
+
+        const noButton = document.getElementById("noButton");
+
+        noButton.addEventListener("mouseover", function() {
+            const x = Math.random() * (window.innerWidth - noButton.clientWidth);
+            const y = Math.random() * (window.innerHeight - noButton.clientHeight);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        });
+
+        noButton.addEventListener("click", function() {
+            alert("You can't say no! 😆");
+        });
+    </script>
+
+</body>
+</html>
